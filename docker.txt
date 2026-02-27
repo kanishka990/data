@@ -1,0 +1,1 @@
+Resource Management: Define CPU and memory requests and limits in your deployment configurations to prevent resource contention, especially in multi-tenant environments.
