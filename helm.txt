@@ -1,0 +1,5 @@
+pecific open-source HRMS projects often provide guides or Helm charts to facilitate Kubernetes deployments. The general process involves: 
+Setting up Storage: Deploying a storage provisioner (e.g., NFS server provisioner) to handle persistent volumes.
+Installing Dependencies: Deploying required services like a MariaDB database and Redis using their respective Helm charts.
+Deploying the HRMS: Using the project-specific Helm chart to install the HRMS application itself, linking it to the external database and Redis instances.
+Accessing the Application: Configuring an Ingress resource or using kubectl port-forward to access the application via a browser. 

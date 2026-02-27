@@ -1,0 +1,5 @@
+
+Require status checks to pass
+✅ Require conversation resolution
+✅ Do not allow bypassing the above settings
+✅ Restrict who can push to matching branches
