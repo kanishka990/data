@@ -1,0 +1,56 @@
+name: CI + CD
+
+on:
+  pull_request:
+    branches: [ feature2 ]
+  push:
+    branches: [ feature2 ]
+  workflow_dispatch:
+
+jobs:
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: echo "Installing dependencies..."
+
+      - name: Run Tests
+        run: echo "Running tests..."
+
+  DeployDev:
+    name: Deploy to Dev
+    if: github.event_name == 'pull_request'
+    needs: [Build]
+    runs-on: ubuntu-latest
+    environment:
+      name: Development
+     
+    steps:
+      - name: Deploy Dev
+        run: echo "Deploying to Development environment..."
+
+  DeployStaging:
+    name: Deploy to Staging
+    if: github.event_name == 'push'
+    needs: [Build]
+    runs-on: ubuntu-latest
+    environment:
+      name: Staging
+ 
+    steps:
+      - name: Deploy Staging
+        run: echo "Deploying to Staging..."
+
+  DeployProd:
+    name: Deploy to Production
+    needs: [DeployStaging]
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+   
+    steps:
+      - name: Deploy Production
+        run: echo "Deploying to Production..."
